@@ -24,7 +24,7 @@
 
         public static void Initialise()
         {
-            Initialise(BrowserType.Firefox);
+            Initialise(BrowserType.IE);
         }
 
         public static void WindowSetup()
