@@ -52,6 +52,7 @@ C:\Users\justin.holsgrove\Desktop\BaseSolution\BaseSolution\bin\Debug\WebDriver.
 C:\Users\justin.holsgrove\Desktop\BaseSolution\BaseSolution\obj\Debug\BaseSolution.csprojResolveAssemblyReference.cache
 C:\Users\justin.holsgrove\Desktop\BaseSolution\BaseSolution\obj\Debug\BaseSolution.dll
 C:\Users\justin.holsgrove\Desktop\BaseSolution\BaseSolution\obj\Debug\BaseSolution.pdb
+C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\IEDriverServer.exe
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\BaseSolution.dll.config
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\BaseSolution.dll
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\BaseSolution.pdb
@@ -64,11 +65,11 @@ C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debu
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\WebDriver.dll
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\WebDriver.Support.dll
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\nunit.framework.xml
+C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\RestSharp.xml
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\Selenium.WebDriverBackedSelenium.xml
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\ThoughtWorks.Selenium.Core.xml
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\WebDriver.xml
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\WebDriver.Support.xml
-C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csprojResolveAssemblyReference.cache
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.dll
 C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.pdb
-C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\bin\Debug\IEDriverServer.exe
+C:\MySpecflow\BaseSpecflowProject-test\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csprojResolveAssemblyReference.cache

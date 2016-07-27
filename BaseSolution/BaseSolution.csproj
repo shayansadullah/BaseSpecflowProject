@@ -42,6 +42,10 @@
     <Reference Include="pnunit.framework, Version=1.0.5463.34981, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\pNUnit.2.6.4\lib\pnunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium">
       <HintPath>..\packages\Selenium.WebDriverBackedSelenium.2.45.0\lib\net40\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
@@ -83,11 +87,22 @@
     <Compile Include="Constants\TagNameConsts.cs" />
     <Compile Include="Constants\UrlConsts.cs" />
     <Compile Include="Constants\XPathConsts.cs" />
+    <Compile Include="Features\RestClientExample.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestClientExample.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Test1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Test.feature</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\WebServices\Call.cs" />
+    <Compile Include="Helpers\WebServices\RestSharpHelper\MyModel.cs" />
+    <Compile Include="Helpers\WebServices\RestSharpHelper\RestSharpHelperAdvanced.cs" />
+    <Compile Include="Helpers\WebServices\RestSharpHelper\RestSharpSimple.cs" />
+    <Compile Include="Helpers\WebServices\RestfulWebService.cs" />
+    <Compile Include="Helpers\WebServices\RestSharpHelper\RestSharpSimple2.cs" />
     <Compile Include="Hooks\FeatureHooks.cs" />
     <Compile Include="Hooks\HookHelper.cs" />
     <Compile Include="Hooks\ScenarioHooks.cs" />
@@ -99,10 +114,15 @@
     <Compile Include="Pages\PageContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Step Definitions\CommonSteps.cs" />
+    <Compile Include="Step Definitions\WebServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\RestClientExample.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RestClientExample.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Test.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

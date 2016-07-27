@@ -16,6 +16,7 @@
         public static void AfterTestRun()
         {
             TestRunContext.Driver.Quit();
+            TestRunContext.Driver.Dispose();
         }
     }
 }
