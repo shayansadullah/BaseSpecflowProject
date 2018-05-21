@@ -21,13 +21,14 @@
 
         private SUTMainPage Page { get; set; }
 
-        [Given(@"I have navigated to '(.*)'")]
+
+        [StepDefinition(@"I have navigated to '(.*)'")]
         public void GivenIHaveNavigatedTo(string website)
         {
             Page.NavigateTo(website);
         }
 
-        [When(@"I click on the logo")]
+        [StepDefinition(@"I click on the logo")]
         public void GivenIClickOnTheLogo()
         {
             Page.ClickOnLogo();

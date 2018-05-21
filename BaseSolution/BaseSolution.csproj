@@ -136,7 +136,9 @@
     <Folder Include="Features\Sanity\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chromedriver.exe" />
+    <Content Include="chromedriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="IEDriverServer.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

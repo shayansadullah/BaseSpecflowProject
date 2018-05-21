@@ -24,7 +24,7 @@
 
         public static void Initialise()
         {
-            Initialise(BrowserType.IE);
+            Initialise(BrowserType.Chrome);
         }
 
         public static void WindowSetup()
