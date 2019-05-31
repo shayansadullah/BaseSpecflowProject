@@ -1,15 +1,9 @@
 ﻿namespace BaseSolution.Step_Definitions
 {
-    using System;
-
-    using BaseSolution.Constants;
     using BaseSolution.Pages;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     using OpenQA.Selenium;
-
     using TechTalk.SpecFlow;
+    using NUnit.Framework;
 
     [Binding]
     internal class CommonSteps
@@ -28,48 +22,106 @@
             Page.NavigateTo(website);
         }
 
-        [StepDefinition(@"I click on the logo")]
-        public void GivenIClickOnTheLogo()
+        [StepDefinition(@"I click on '(.*)' link")]
+        public void ClickOnLink(string linkName)
         {
-            Page.ClickOnLogo();
-        }
-
-        [Then(@"the window title is '(.*)'")]
-        public void ThenTheWindowTitleIs(string winTitle)
-        {
-            var getwinTitle = Page.WindowTitle();
-            Assert.AreEqual(winTitle, getwinTitle);
-        }
-
-        [When(@"I click button '(.*)'")]
-        public void WhenIClickButton(string buttonName)
-        {
-            switch (buttonName)
+            switch (linkName)
             {
-                case "X":
-                    Page.WaitForElementByName(IdAttribute.Logo);
-                    Page.ClickByName(IdAttribute.Logo);
-                    break;
-
-                case "Y":
-                    // Do something else
-                    break;
+                case "Add Extraction Rule":
+                    {
+                        Page.WaitForElementById("addExtractionRuleLink");
+                        Page.ClickById("addExtractionRuleLink");
+                        break;
+                    }
             }
         }
 
-        [Given(@"I enter '(.*)' into the search")]
-        public void GivenIEnterIntoTheSearch(string searchCriteria)
+        [StepDefinition(@"I enter the Add Extraction Rule field '(.*)' with the text '(.*)'")]
+        [StepDefinition(@"I update the Add Extraction Rule field '(.*)' with the drop-down value of '(.*)'")]
+        [StepDefinition(@"I update the Add Extraction Rule field '(.*)' with value '(.*)'")]
+        [StepDefinition(@"I update the Add Extraction Rule field '(.*)' with values '(.*)'")]
+        public void AddExtractionDataField(string fieldName, string formValue)
         {
-            // true or false bool value indicates optional enter keypress
-            Page.EnterTextIntoTextBox(By.Id(IdAttribute.Example), searchCriteria, true);
+            Page.WaitForElementById("addEditRuleDialog");
+            switch (fieldName)
+            {
+                case "Name":
+                    {
+                        Page.EnterTextIntoTextBox(By.Id("nameInput"), formValue);
+                        break;
+                    }
+                case "Type":
+                    {
+                        switch (formValue)
+                        {
+                            case "Content Pattern Match":
+                                {
+                                    Page.ClickById("contentPatternTypeOption");
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case "Data Type":
+                    {
+                        Page.SelectDropDownItemByOption(By.Id("ruleDataTypeList"), formValue);
+                        break;
+                    }
+                case "Description":
+                    {
+                        Page.EnterTextIntoTextBox(By.Id("descriptionInput"), formValue);
+                        break;
+                    }
+                case "Masking":
+                    {
+                        Page.ClickById("maskingCheckbox");
+                        var maskitem = formValue.Split(',');
+                        PartToMask(maskitem[0]);
+                        MaskSize(maskitem[1]);
+                        break;
+                    }
+                case "Pattern":
+                    {
+                        Page.EnterTextIntoTextBox(By.Id("expressionInput"), formValue);
+                        break;
+                    }
+            }
         }
 
-        [Then(@"I am displayed details for '(.*)'")]
-        public void ThenIAmDisplayedDetailsFor(string mySearch)
+        private void PartToMask(string partToMask)
         {
-            Page.WaitForElementByClass("cards-alias-entity-location");
-            var searchText = Page.GetTextByClass("cards-alias-entity-location");
-            Assert.IsTrue(searchText.Contains("Renaissance London"), "Expected text was incorrect or null.");
+            Page.WaitForElementById("maskingPartList");
+            Page.SelectDropDownItemByOption(By.Id("maskingPartList"), partToMask);
+        }
+
+        private void MaskSize(string percentInput)
+        {
+            Page.WaitForElementById("maskPercentInput");
+            Page.EnterTextIntoTextBox(By.Id("maskPercentInput"), percentInput);
+        }
+
+        [StepDefinition(@"I save the Extraction Rule")]
+        public void Save()
+        {
+            Page.WaitForElementById("saveButton");
+            Page.ClickById("saveButton");
+            Page.WaitForElementById("addExtractionRuleLink");
+        }
+
+        [StepDefinition(@"I search for the Extraction Rule '(.*)'")]
+        public void SearchForExtractionRule(string ruleName)
+        {
+            Page.WaitForElementById("gs_name");
+            Page.EnterTextIntoTextBox(By.Id("gs_name"), ruleName);
+            Page.SendEnterOrReturnKey(By.Id("gs_name"));
+        }
+
+        [StepDefinition(@"Extraction Rule (.*) is present")]
+        public void ThenIAmDisplayedDetailsFor(string extractionRuleText)
+        {
+            var bar = Page.GetTextByXPath("//td[contains(text(), 'Any Rule Name')]");
+            Assert.That(bar, Is.EqualTo("Any Rule Name"));
+
         }
     }
 }

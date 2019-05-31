@@ -27,7 +27,7 @@ namespace BaseSolution.Pages
     public class PageBase
     {
         protected readonly PageContext Context;
-        private const int MaxWaitSeconds = 30;
+        private const int MaxWaitSeconds = 90;
 
         public PageBase(PageContext context)
         {
@@ -52,9 +52,9 @@ namespace BaseSolution.Pages
 
         public void NavigateTo(string url)
         {
-            this.Context.Driver.Navigate().GoToUrl(url);
-        }
-
+            this.Context.Driver.Navigate().GoToUrl("http://review%5c%5cxxx:yyy@demo.activenavigation.com/Admin/MetaDataExtractionRules.aspx");
+        }   
+        
         public void RefreshBrowser()
         {
             this.Context.Driver.Navigate().Refresh();
@@ -66,6 +66,12 @@ namespace BaseSolution.Pages
             element.SendKeys(searchCriteria);
         }
 
+        internal void SendEnterOrReturnKey(By criteria)
+        {
+            IWebElement element = Context.Driver.FindElement(criteria);
+            element.SendKeys(Keys.Enter);
+        }
+
         public IWebElement WaitForElementByClass(string className)
         {
             return this.WaitForVisibility(By.ClassName(className));
@@ -74,6 +80,11 @@ namespace BaseSolution.Pages
         public IWebElement WaitForElementByName(string name)
         {
             return this.WaitForVisibility(By.Name(name));
+        }
+
+        public IWebElement WaitForElementById(string name)
+        {
+            return this.WaitForVisibility(By.Id(name));
         }
 
         // Get by Text
@@ -110,10 +121,9 @@ namespace BaseSolution.Pages
 
         public void EnterTextIntoTextBox(By criteria, string text, bool addEnter = false)
         {
-            WaitForVisibility(criteria, 2);
+            WaitForVisibility(criteria, 10);
             var element = Context.Driver.FindElement(criteria);
             element.Click();
-            element.Clear();
             element.SendKeys(text);
 
             if (addEnter)
@@ -245,6 +255,13 @@ namespace BaseSolution.Pages
             return (lis == null || lis.Count == 0);
         }
 
+        public void SelectDropDownItemByOption(By criterion, string dropDownValue )
+        {
+            IWebElement chosenDropDownElement = Context.Driver.FindElement(criterion);
+            SelectElement selectElement = new SelectElement(chosenDropDownElement);
+            selectElement.SelectByText(dropDownValue);
+        }
+
         public string GetSelectedItemFromCombobox(By combobox)
         {
             IWebElement chosenCombobox = Context.Driver.FindElement(combobox);
@@ -256,7 +273,6 @@ namespace BaseSolution.Pages
         public bool IsCheckboxSelected(By checkBox)
         {
             IWebElement Checkbox = Context.Driver.FindElement(checkBox);
-
             return Checkbox.Selected;
         }
      

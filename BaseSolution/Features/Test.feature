@@ -5,5 +5,4 @@
 
 @mytag
 Scenario: Go To Google
-	Given I have navigated to 'http://www.Google.com'
-	Then the window title is 'Google'
+	Given I have navigated to 'http://demo.activenavigation.com'

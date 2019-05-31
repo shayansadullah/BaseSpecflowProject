@@ -92,6 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RestClientExample.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\SpecFlowFeature1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Test1.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,17 +129,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RestClientExample.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\SpecFlowFeature1.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Test.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Test1.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Functional\" />
-    <Folder Include="Features\Regression\" />
-    <Folder Include="Features\Sanity\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="chromedriver.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
