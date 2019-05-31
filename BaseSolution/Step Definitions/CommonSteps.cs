@@ -1,9 +1,12 @@
 ﻿namespace BaseSolution.Step_Definitions
 {
+    using System;
     using BaseSolution.Pages;
     using OpenQA.Selenium;
     using TechTalk.SpecFlow;
     using NUnit.Framework;
+    using TechTalk.SpecFlow;
+    using System.Collections.Generic;
 
     [Binding]
     internal class CommonSteps
@@ -100,12 +103,18 @@
             Page.EnterTextIntoTextBox(By.Id("maskPercentInput"), percentInput);
         }
 
-        [StepDefinition(@"I save the Extraction Rule")]
+        [StepDefinition(@"I save the Extraction Rule successfully")]
         public void Save()
+        {
+            SaveExtractionRules();
+            Page.WaitForElementById("addExtractionRuleLink");
+        }
+
+        [StepDefinition(@"I save the Extraction Rule without any data")]
+        public void SaveExtractionRules()
         {
             Page.WaitForElementById("saveButton");
             Page.ClickById("saveButton");
-            Page.WaitForElementById("addExtractionRuleLink");
         }
 
         [StepDefinition(@"I search for the Extraction Rule '(.*)'")]
@@ -119,9 +128,34 @@
         [StepDefinition(@"Extraction Rule (.*) is present")]
         public void ThenIAmDisplayedDetailsFor(string extractionRuleText)
         {
-            var bar = Page.GetTextByXPath("//td[contains(text(), 'Any Rule Name')]");
-            Assert.That(bar, Is.EqualTo("Any Rule Name"));
+            var extractionName = Page.GetTextByXPath("//td[contains(text(), 'Any Rule Name')]");
+            Assert.That(extractionName, Is.EqualTo("Any Rule Name"), string.Format("Extraction Name '%s' is not present", extractionName));
+        }
 
+        [StepDefinition(@"I should get an error message for the following fields:")]
+        public void GetFormInputErrors(Table table)
+        {
+            var fieldsWithErrors = Page.GetElementsByXPath("//label[@title='This field is required']/..");
+            string textConcatenate = null;
+            foreach (var fieldWithError in fieldsWithErrors)
+            {
+                textConcatenate += fieldWithError.Text;
+            }
+
+            string fieldsWithoutErrors = null;
+            foreach(var row in table.Rows)
+            {
+                if (!textConcatenate.Contains(row[0]))
+                {
+                    fieldsWithoutErrors += row[0];
+                }
+            }
+
+            if (fieldsWithoutErrors != null)
+            {
+                Assert.Fail(string.Format("Field input errors not reported for: %s", fieldsWithoutErrors));
+            }
+            
         }
     }
 }

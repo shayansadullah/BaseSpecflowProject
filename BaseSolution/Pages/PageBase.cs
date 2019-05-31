@@ -87,6 +87,8 @@ namespace BaseSolution.Pages
             return this.WaitForVisibility(By.Id(name));
         }
 
+
+
         // Get by Text
         public string GetTextById(string id)
         {
@@ -144,6 +146,11 @@ namespace BaseSolution.Pages
             return Context.Driver.FindElements(By.TagName(tagName));
         }
 
+        public IReadOnlyCollection<IWebElement> GetElementsByXPath(string xpath)
+        {
+            return Context.Driver.FindElements(By.XPath(xpath));
+        }
+
         public IReadOnlyCollection<IWebElement> GetElementsById(string id)
         {
             return Context.Driver.FindElements(By.Id(id));
@@ -154,6 +161,7 @@ namespace BaseSolution.Pages
             WaitForVisibility(By.XPath(XPathText), 10);
             return Context.Driver.FindElement(By.XPath(XPathText)).Text;
         }
+
 
         public string GetTextByTagName(string tagName)
         {

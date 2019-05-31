@@ -24,7 +24,6 @@ namespace BaseSolution.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-           
         }
     }
 }
