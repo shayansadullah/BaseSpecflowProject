@@ -1,11 +1,9 @@
 ﻿namespace BaseSolution.Step_Definitions
-{
-    using System;
+{ 
     using BaseSolution.Pages;
     using OpenQA.Selenium;
     using TechTalk.SpecFlow;
     using NUnit.Framework;
-    using TechTalk.SpecFlow;
     using System.Collections.Generic;
 
     [Binding]
@@ -77,7 +75,7 @@
                     }
                 case "Masking":
                     {
-                        Page.ClickById("maskingCheckbox");
+                        ClickOnMaskingCheckBox();
                         var maskitem = formValue.Split(',');
                         PartToMask(maskitem[0]);
                         MaskSize(maskitem[1]);
@@ -89,6 +87,12 @@
                         break;
                     }
             }
+        }
+
+        [StepDefinition(@"I click on the masking checkbox")]
+        internal void ClickOnMaskingCheckBox()
+        {
+            Page.ClickById("maskingCheckbox");
         }
 
         private void PartToMask(string partToMask)
@@ -110,7 +114,8 @@
             Page.WaitForElementById("addExtractionRuleLink");
         }
 
-        [StepDefinition(@"I save the Extraction Rule without any data")]
+        [StepDefinition(@"I save the Extraction Rule")]
+        [StepDefinition(@"I save the Extraction Rule without any data input")]
         public void SaveExtractionRules()
         {
             Page.WaitForElementById("saveButton");
@@ -129,33 +134,52 @@
         public void ThenIAmDisplayedDetailsFor(string extractionRuleText)
         {
             var extractionName = Page.GetTextByXPath("//td[contains(text(), 'Any Rule Name')]");
-            Assert.That(extractionName, Is.EqualTo("Any Rule Name"), string.Format("Extraction Name '%s' is not present", extractionName));
+            Assert.That(extractionName, Is.EqualTo("Any Rule Name"), string.Format("Extraction Name '{0}' is not present", extractionName));
         }
 
-        [StepDefinition(@"I should get an error message for the following fields:")]
+        [StepDefinition(@"I should get an error message stating that the fields are required for the following:")]
         public void GetFormInputErrors(Table table)
         {
             var fieldsWithErrors = Page.GetElementsByXPath("//label[@title='This field is required']/..");
+            GetFormInputErrorDetails(fieldsWithErrors, table);
+        }
+
+        [StepDefinition(@"I should get an error message for the following fields:")]
+        public void GetMaskInputErrorsTable(Table table)
+        {
+            foreach(var row in table.Rows)
+            {
+                GetValidationInputError(row[0], row[1]);
+            }
+        }
+
+        public void GetValidationInputError(string field, string errorValue)
+        {
+            var myField = Page.GetElementByXPath(string.Format("//label[@title='{0}']/../..", errorValue));
+
+            Assert.That(myField.Text.Contains(field),
+                string.Format("Validation error is not present for field: '{0}'", field));
+        }
+
+        public void GetFormInputErrorDetails(IReadOnlyCollection<IWebElement> fieldsWithErrors, Table table)
+        {
             string textConcatenate = null;
             foreach (var fieldWithError in fieldsWithErrors)
             {
                 textConcatenate += fieldWithError.Text;
             }
-
-            string fieldsWithoutErrors = null;
-            foreach(var row in table.Rows)
+            string fieldsThatShouldHaveHadErrorsShown = null;
+            foreach (var row in table.Rows)
             {
                 if (!textConcatenate.Contains(row[0]))
                 {
-                    fieldsWithoutErrors += row[0];
+                    fieldsThatShouldHaveHadErrorsShown += row[0] + ", ";
                 }
             }
-
-            if (fieldsWithoutErrors != null)
+            if (fieldsThatShouldHaveHadErrorsShown != null)
             {
-                Assert.Fail(string.Format("Field input errors not reported for: %s", fieldsWithoutErrors));
+                Assert.Fail(string.Format("Field input validation errors not reported for the following fields: '{0}'", fieldsThatShouldHaveHadErrorsShown));
             }
-            
         }
     }
 }

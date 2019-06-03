@@ -104,6 +104,8 @@
     <Compile Include="Constants\TagNameConsts.cs" />
     <Compile Include="Constants\UrlConsts.cs" />
     <Compile Include="Constants\XPathConsts.cs" />
+    <Compile Include="Features\RestClientExample.feature.cs" />
+    <Compile Include="Features\SpecFlowFeature2.feature.cs" />
     <Compile Include="Helpers\WebServices\Call.cs" />
     <Compile Include="Helpers\WebServices\RestSharpHelper\MyModel.cs" />
     <Compile Include="Helpers\WebServices\RestSharpHelper\RestSharpHelperAdvanced.cs" />
@@ -127,9 +129,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Features\ExtractionRules\AddExtractionRule.feature" />
+    <None Include="Features\ExtractionRules\ValidateExtractionRule.feature" />
     <None Include="Features\RestClientExample.feature" />
-    <None Include="Features\SpecFlowFeature2.feature" />
-    <None Include="Features\Test.feature" />
     <None Include="packages.config" />
     <None Include="specflow.json" />
   </ItemGroup>

@@ -146,6 +146,11 @@ namespace BaseSolution.Pages
             return Context.Driver.FindElements(By.TagName(tagName));
         }
 
+        public IWebElement GetElementByXPath(string xpath)
+        {
+            return Context.Driver.FindElement(By.XPath(xpath));
+        }
+
         public IReadOnlyCollection<IWebElement> GetElementsByXPath(string xpath)
         {
             return Context.Driver.FindElements(By.XPath(xpath));

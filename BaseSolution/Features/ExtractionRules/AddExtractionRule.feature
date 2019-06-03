@@ -1,4 +1,4 @@
-﻿Feature: ValidateExtractionRules
+﻿Feature: AddExtractionRules
 	In order to create a successful extraction rule
 	As an end user
 	I want to be able to perform an extraction of data
@@ -21,12 +21,3 @@ Scenario Outline: Add Extraction Rule Successfully
     Examples:
 	| NameText				| TypeText					| DataType | Description				 | MaskingDetails | PatternValue	    |
 	| Any Rule Name         | Content Pattern Match		| String   | some description            |	Left,20		  |	(?<=\\)[M-Z][^\\]*$ |
-
-
-Scenario: Validate Extraction Rule input form
-	Given I save the Extraction Rule without any data
-	Then I should get an error message for the following fields:
-	| Field     |
-	| Name      |
-	| Type      |
-	| Data Type |

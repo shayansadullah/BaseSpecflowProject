@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace BaseSolution.Features
+namespace BaseSolution.Features.ExtractionRules
 {
     using TechTalk.SpecFlow;
     
@@ -18,20 +18,20 @@ namespace BaseSolution.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ValidateExtractionRules")]
-    public partial class ValidateExtractionRulesFeature
+    [NUnit.Framework.DescriptionAttribute("AddExtractionRules")]
+    public partial class AddExtractionRulesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "SpecFlowFeature2.feature"
+#line 1 "AddExtractionRule.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-UK"), "ValidateExtractionRules", "\tIn order to create a successful extraction rule\r\n\tAs an end user\r\n\tI want to be " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-UK"), "AddExtractionRules", "\tIn order to create a successful extraction rule\r\n\tAs an end user\r\n\tI want to be " +
                     "able to perform an extraction of data", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -110,95 +110,6 @@ this.FeatureBackground();
  testRunner.And(string.Format("I search for the Extraction Rule \'{0}\'", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
  testRunner.Then(string.Format("Extraction Rule \'{0}\' is present", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate Extraction Rule input form by just clicking the save button straight awa" +
-            "y")]
-        public virtual void ValidateExtractionRuleInputFormByJustClickingTheSaveButtonStraightAway()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Extraction Rule input form by just clicking the save button straight awa" +
-                    "y", null, ((string[])(null)));
-#line 25
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line 26
- testRunner.When("I save the Extraction Rule without any data input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field"});
-            table4.AddRow(new string[] {
-                        "Name"});
-            table4.AddRow(new string[] {
-                        "Type"});
-            table4.AddRow(new string[] {
-                        "Data Type"});
-#line 27
- testRunner.Then("I should get an error message stating that the fields are required for the follow" +
-                    "ing:", ((string)(null)), table4, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate Extraction Rule input form by not filling in Masking data")]
-        public virtual void ValidateExtractionRuleInputFormByNotFillingInMaskingData()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Extraction Rule input form by not filling in Masking data", null, ((string[])(null)));
-#line 33
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line 34
- testRunner.And("I update the Add Extraction Rule field \'Masking\' with values \'Please select,\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
- testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Field",
-                        "Masking Error Text"});
-            table5.AddRow(new string[] {
-                        "Part to mask",
-                        "You must select which part of the extraction rule value you would like to mask."});
-            table5.AddRow(new string[] {
-                        "Mask size (%)",
-                        "You must select a percentage of the value to be masked between 1 and 100."});
-#line 36
- testRunner.Then("I should get an error message stating that the masking is required", ((string)(null)), table5, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate Extraction Rule input form by not filling in the Mask size correctly")]
-        public virtual void ValidateExtractionRuleInputFormByNotFillingInTheMaskSizeCorrectly()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Extraction Rule input form by not filling in the Mask size correctly", null, ((string[])(null)));
-#line 41
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 6
-this.FeatureBackground();
-#line 42
- testRunner.When("I click on the masking checkbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Mask size"});
-            table6.AddRow(new string[] {
-                        "101"});
-            table6.AddRow(new string[] {
-                        "-1"});
-            table6.AddRow(new string[] {
-                        "100.1"});
-            table6.AddRow(new string[] {
-                        "0.1"});
-#line 43
- testRunner.Then("different invalid Mask size figures cannot be added:", ((string)(null)), table6, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
