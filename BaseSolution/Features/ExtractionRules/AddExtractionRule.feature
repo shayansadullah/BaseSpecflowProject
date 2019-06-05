@@ -15,9 +15,12 @@ Scenario Outline: Add Extraction Rule Successfully
 	And I update the Add Extraction Rule field 'Masking' with values '<MaskingDetails>'
 	And I enter the Add Extraction Rule field 'Pattern' with the text '<PatternValue>'
 	When I save the Extraction Rule successfully
-	And I search for the Extraction Rule '<NameText>'
-	Then Extraction Rule '<NameText>' is present
+	And I search for the Extraction Rule
+	Then Extraction Rule is present
 
     Examples:
-	| NameText				| TypeText					| DataType | Description				 | MaskingDetails | PatternValue	    |
-	| Any Rule Name         | Content Pattern Match		| String   | some description            |	Left,20		  |	(?<=\\)[M-Z][^\\]*$ |
+	| NameText                            | TypeText              | DataType | Description         | MaskingDetails | PatternValue        |
+	| DataExtraction                      | Content Pattern Match | String   | some description    | Left,20        | (?<=\\)[M-Z][^\\]*$ |
+	| ÝÞßàáâãäåæçèéêëìíîï                 | Content Pattern Match | String   | ÝÞßàáâãäåæçèéêëìíîï | Left,20        | some pattern        |
+	| 49characters49characters49characte  | Content Pattern Match | String   | some description    | Right,80       | (?<=\\)[M-Z][^\\]*$ |
+	| 50characters50characters50character | Content Pattern Match | String   | some description    | Middle,40      | (?<=\\)[M-Z][^\\]*$ |

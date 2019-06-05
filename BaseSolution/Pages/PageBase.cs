@@ -1,15 +1,12 @@
 ﻿﻿using System;
 using System.Collections.Generic;
 ﻿using System.Collections.ObjectModel;
-﻿using System.Drawing;
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Interactions;
 using System.Linq;
 using OpenQA.Selenium.Support.UI;
-using System.Net;
-﻿using TechTalk.SpecFlow;
 
 namespace BaseSolution.Pages
 {
@@ -144,6 +141,11 @@ namespace BaseSolution.Pages
         public IReadOnlyCollection<IWebElement> GetElementsByTagName(string tagName)
         {
             return Context.Driver.FindElements(By.TagName(tagName));
+        }
+
+        public IWebElement GetElementById(string id)
+        {
+            return Context.Driver.FindElement(By.Id(id));
         }
 
         public IWebElement GetElementByXPath(string xpath)

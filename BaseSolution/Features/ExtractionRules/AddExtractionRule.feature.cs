@@ -82,7 +82,10 @@ namespace BaseSolution.Features.ExtractionRules
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Extraction Rule Successfully")]
-        [NUnit.Framework.TestCaseAttribute("Any Rule Name", "Content Pattern Match", "String", "some description", "Left,20", "(?<=\\)[M-Z][^\\]*$", null)]
+        [NUnit.Framework.TestCaseAttribute("DataExtraction", "Content Pattern Match", "String", "some description", "Left,20", "(?<=\\)[M-Z][^\\]*$", null)]
+        [NUnit.Framework.TestCaseAttribute("ÝÞßàáâãäåæçèéêëìíîï", "Content Pattern Match", "String", "ÝÞßàáâãäåæçèéêëìíîï", "Left,20", "some pattern", null)]
+        [NUnit.Framework.TestCaseAttribute("49characters49characters49characte", "Content Pattern Match", "String", "some description", "Right,80", "(?<=\\)[M-Z][^\\]*$", null)]
+        [NUnit.Framework.TestCaseAttribute("50characters50characters50character", "Content Pattern Match", "String", "some description", "Middle,40", "(?<=\\)[M-Z][^\\]*$", null)]
         public virtual void AddExtractionRuleSuccessfully(string nameText, string typeText, string dataType, string description, string maskingDetails, string patternValue, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Extraction Rule Successfully", null, exampleTags);
@@ -107,9 +110,9 @@ this.FeatureBackground();
 #line 17
  testRunner.When("I save the Extraction Rule successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
- testRunner.And(string.Format("I search for the Extraction Rule \'{0}\'", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I search for the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
- testRunner.Then(string.Format("Extraction Rule \'{0}\' is present", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Extraction Rule is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

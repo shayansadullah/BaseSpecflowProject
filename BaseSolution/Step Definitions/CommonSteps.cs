@@ -1,10 +1,12 @@
 ﻿namespace BaseSolution.Step_Definitions
-{ 
+{
+    using System;
     using BaseSolution.Pages;
     using OpenQA.Selenium;
     using TechTalk.SpecFlow;
     using NUnit.Framework;
     using System.Collections.Generic;
+    using Constants;
 
     [Binding]
     internal class CommonSteps
@@ -15,7 +17,7 @@
         }
 
         private SUTMainPage Page { get; set; }
-
+        private string ExtractionName { get; set; }
 
         [StepDefinition(@"I have navigated to '(.*)'")]
         public void GivenIHaveNavigatedTo(string website)
@@ -48,6 +50,15 @@
             {
                 case "Name":
                     {
+                        var dateTime = DateTime.Now.ToString("MMddyyyyhhmmss");
+                        var nameField = string.Format(formValue + "-" + dateTime); 
+                        this.ExtractionName = nameField;
+                        Page.EnterTextIntoTextBox(By.Id(IdAttribute.NameInput), nameField);
+                        break;
+                    }
+                case "SearchName":
+                    {
+                        this.ExtractionName = formValue;
                         Page.EnterTextIntoTextBox(By.Id("nameInput"), formValue);
                         break;
                     }
@@ -92,7 +103,11 @@
         [StepDefinition(@"I click on the masking checkbox")]
         internal void ClickOnMaskingCheckBox()
         {
-            Page.ClickById("maskingCheckbox");
+            var stateOfCheckBox = Page.IsCheckboxSelected(By.Id("maskingCheckbox"));
+            if (!stateOfCheckBox)
+            {
+                Page.ClickById("maskingCheckbox");
+            }
         }
 
         private void PartToMask(string partToMask)
@@ -122,19 +137,19 @@
             Page.ClickById("saveButton");
         }
 
-        [StepDefinition(@"I search for the Extraction Rule '(.*)'")]
-        public void SearchForExtractionRule(string ruleName)
+        [StepDefinition(@"I search for the Extraction Rule")]
+        public void SearchForExtractionRule()
         {
             Page.WaitForElementById("gs_name");
-            Page.EnterTextIntoTextBox(By.Id("gs_name"), ruleName);
+            Page.EnterTextIntoTextBox(By.Id("gs_name"), this.ExtractionName);
             Page.SendEnterOrReturnKey(By.Id("gs_name"));
         }
 
-        [StepDefinition(@"Extraction Rule (.*) is present")]
-        public void ThenIAmDisplayedDetailsFor(string extractionRuleText)
+        [StepDefinition(@"Extraction Rule is present")]
+        public void ThenIAmDisplayedDetailsFor()
         {
-            var extractionName = Page.GetTextByXPath("//td[contains(text(), 'Any Rule Name')]");
-            Assert.That(extractionName, Is.EqualTo("Any Rule Name"), string.Format("Extraction Name '{0}' is not present", extractionName));
+            var extractionName = Page.GetTextByXPath(string.Format("//td[contains(text(), '{0}')]", this.ExtractionName));
+            Assert.That(extractionName, Is.EqualTo(this.ExtractionName), string.Format("Extraction Name '{0}' is not present", extractionName));
         }
 
         [StepDefinition(@"I should get an error message stating that the fields are required for the following:")]
@@ -153,10 +168,10 @@
             }
         }
 
-        public void GetValidationInputError(string field, string errorValue)
+        [StepDefinition(@"the field (.*) has the error value: (.*)")]
+         public void GetValidationInputError(string field, string errorValue)
         {
             var myField = Page.GetElementByXPath(string.Format("//label[@title='{0}']/../..", errorValue));
-
             Assert.That(myField.Text.Contains(field),
                 string.Format("Validation error is not present for field: '{0}'", field));
         }
@@ -180,6 +195,12 @@
             {
                 Assert.Fail(string.Format("Field input validation errors not reported for the following fields: '{0}'", fieldsThatShouldHaveHadErrorsShown));
             }
+        }
+
+        [StepDefinition(@"Remove Extraction")]
+        public void RemoveExtractionFile()
+        {
+
         }
     }
 }

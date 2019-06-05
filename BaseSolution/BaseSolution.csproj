@@ -104,6 +104,8 @@
     <Compile Include="Constants\TagNameConsts.cs" />
     <Compile Include="Constants\UrlConsts.cs" />
     <Compile Include="Constants\XPathConsts.cs" />
+    <Compile Include="Features\ExtractionRules\AddExtractionRule.feature.cs" />
+    <Compile Include="Features\ExtractionRules\ValidateExtractionRule.feature.cs" />
     <Compile Include="Features\RestClientExample.feature.cs" />
     <Compile Include="Features\SpecFlowFeature2.feature.cs" />
     <Compile Include="Helpers\WebServices\Call.cs" />

@@ -21,30 +21,35 @@ Scenario: Validate Extraction Rule input form by not entering any data
 	| Part to mask	| You must select which part of the extraction rule value you would like to mask.	|
 	| Mask size (%)	| You must select a percentage of the value to be masked between 1 and 100.			|
 
-@ignore
-Scenario Outline: Validate Extraction Rule input form by not filling in the Mask size correctly
-	When I click on the masking checkbox
-	And I update the Add Extraction Rule field 'Masking' with values '<MaskingDetails>'
-    Then I should get an error message '<MaskingErrorText>'
+Scenario Outline: Validate Extraction Rule Mask Size must be a percentage figure
+	And I click on the masking checkbox
+	And I update the Add Extraction Rule field 'Masking' with values '<Masking Field>'
+    When I save the Extraction Rule
+	Then the field Mask size (%) has the error value: <Error Value>
 
 	Examples:
-    | MaskingDetails | Masking Error Text	|
-    | Left,101       |						|
+	| Masking Field  | Error Value |
+	| Left,101       | Value must be between 1 and 100	|
+	| Left,0.99      | Value must be between 1 and 100	|
+	| Left, sometext | Value must be numeric            |
 
-
-@ignore
-Scenario Outline: Validate cannot add an Extraction Rule without a Pattern
-	And I enter the Add Extraction Rule field 'Name' with the text '<NameText>'
-	And I update the Add Extraction Rule field 'Type' with the drop-down value of '<TypeText>'
-	And I update the Add Extraction Rule field 'Data Type' with the drop-down value of '<DataType>'
-	And I update the Add Extraction Rule field 'Masking' with values '<MaskingDetails>'
-	And I enter the Add Extraction Rule field 'Pattern' with the text '<PatternValue>'
+Scenario: Validate cannot add an Extraction Rule without a Pattern
+	And I update the Add Extraction Rule field 'Type' with the drop-down value of 'Content Pattern Match'
     When I save the Extraction Rule
 	Then I should get an error message for the following fields:
-	| Field			| Error Text									|	
-	| Pattern       |  "A valid regular expression is required"     |	
+	| Field   | Error Text                                                                                    |
+	| Pattern | A valid regular expression is required. CR and LF should be matched using \r and \\n patterns |
 
-    Examples:
-	| NameText				   | TypeText					| DataType | Description				 | MaskingDetails | PatternValue		|
-	| No Pattern input         | Content Pattern Match		| String   | some description            |	Left,20		  |						|
+Scenario: Validate name field character length cannot exceed 50 characters
+	And I enter the Add Extraction Rule field 'Name' with the text 'Lorem ipsum dolor sit amet, consectetur adipiscinga'
+    When I save the Extraction Rule
+	Then I should get an error message for the following fields:
+	| Field | Error Text                 |
+	| Name  | Max character length is 50 |
 
+Scenario: Validate that you cannot add an Extraction Rule that already exists
+	And I enter the Add Extraction Rule field 'SearchName' with the text '_Animals'
+    When I save the Extraction Rule
+	Then I should get an error message for the following fields:
+	| Field | Error Text							|
+	| Name  | Extraction rule name must be unique.	|
