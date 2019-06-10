@@ -7,6 +7,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Interactions;
 using System.Linq;
 using OpenQA.Selenium.Support.UI;
+using System.Configuration;
 
 namespace BaseSolution.Pages
 {
@@ -24,7 +25,7 @@ namespace BaseSolution.Pages
     public class PageBase
     {
         protected readonly PageContext Context;
-        private const int MaxWaitSeconds = 90;
+        private const int MaxWaitSeconds = 30;
 
         public PageBase(PageContext context)
         {
@@ -49,7 +50,11 @@ namespace BaseSolution.Pages
 
         public void NavigateTo(string url)
         {
-            this.Context.Driver.Navigate().GoToUrl("http://review%5c%5cxxx:yyy@demo.activenavigation.com/Admin/MetaDataExtractionRules.aspx");
+            var settings = ConfigurationManager.AppSettings;
+            var user = settings.Get("User");
+            var password = settings.Get("Password");
+            var activeNavigationUrl = string.Format("http://review%5c%5c{0}:{1}@demo.activenavigation.com/Admin/MetaDataExtractionRules.aspx", user, password);
+            this.Context.Driver.Navigate().GoToUrl(activeNavigationUrl);
         }   
         
         public void RefreshBrowser()
@@ -131,10 +136,16 @@ namespace BaseSolution.Pages
             }
         }
 
-        internal void SendKeysSlowly(string IdQuery, string searchCriteria)
+        public void ClearText(string IdQuery)
         {
             var element = Context.Driver.FindElement(By.Id(IdQuery));
             element.Clear();
+        }
+
+        internal void SendKeysSlowly(string IdQuery, string searchCriteria)
+        {
+            var element = Context.Driver.FindElement(By.Id(IdQuery));
+            ClearText(IdQuery);
             element.SendKeys(searchCriteria);
         }
 

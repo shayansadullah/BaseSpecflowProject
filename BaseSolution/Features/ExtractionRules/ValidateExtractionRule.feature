@@ -21,18 +21,15 @@ Scenario: Validate Extraction Rule input form by not entering any data
 	| Part to mask	| You must select which part of the extraction rule value you would like to mask.	|
 	| Mask size (%)	| You must select a percentage of the value to be masked between 1 and 100.			|
 
-Scenario Outline: Validate Extraction Rule Mask Size must be a percentage figure
+Scenario: Validate Extraction Rule Mask Size must be a percentage figure
 	And I click on the masking checkbox
-	And I update the Add Extraction Rule field 'Masking' with values '<Masking Field>'
-    When I save the Extraction Rule
-	Then the field Mask size (%) has the error value: <Error Value>
-
-	Examples:
-	| Masking Field  | Error Value |
-	| Left,101       | Value must be between 1 and 100	|
-	| Left,0.99      | Value must be between 1 and 100	|
-	| Left, sometext | Value must be numeric            |
-
+    And I update the Masking field:
+	| Masking Field  | Error Value                     |
+	| Left,101       | Value must be between 1 and 100 |
+	| Left,0.99      | Value must be between 1 and 100 |
+	| Left, sometext | Value must be numeric           |
+	| Right, -1      | Value must be between 1 and 100 |
+	
 Scenario: Validate cannot add an Extraction Rule without a Pattern
 	And I update the Add Extraction Rule field 'Type' with the drop-down value of 'Content Pattern Match'
     When I save the Extraction Rule

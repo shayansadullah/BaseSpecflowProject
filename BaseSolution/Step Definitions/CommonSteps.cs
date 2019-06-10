@@ -100,6 +100,18 @@
             }
         }
 
+        [StepDefinition(@"I update the Masking field:")]
+        public void updateTheMaskingField(Table maskingFields)
+        {
+            foreach(var row in maskingFields.Rows)
+            {
+                Page.ClearText("maskPercentInput");
+                AddExtractionDataField("Masking", row[0]);
+                SaveExtractionRules();
+                GetValidationInputError("Mask size (%)", row[1]);
+            }
+        }
+
         [StepDefinition(@"I click on the masking checkbox")]
         internal void ClickOnMaskingCheckBox()
         {
