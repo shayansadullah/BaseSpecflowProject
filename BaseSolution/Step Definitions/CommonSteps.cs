@@ -49,54 +49,41 @@
             switch (fieldName)
             {
                 case "Name":
-                    {
                         var dateTime = DateTime.Now.ToString("MMddyyyyhhmmss");
                         var nameField = string.Format(formValue + "-" + dateTime); 
                         this.ExtractionName = nameField;
                         Page.EnterTextIntoTextBox(By.Id(IdAttribute.NameInput), nameField);
                         break;
-                    }
                 case "SearchName":
-                    {
                         this.ExtractionName = formValue;
                         Page.EnterTextIntoTextBox(By.Id("nameInput"), formValue);
                         break;
-                    }
                 case "Type":
-                    {
                         switch (formValue)
                         {
                             case "Content Pattern Match":
-                                {
                                     Page.ClickById("contentPatternTypeOption");
                                     break;
-                                }
                         }
                         break;
-                    }
                 case "Data Type":
-                    {
                         Page.SelectDropDownItemByOption(By.Id("ruleDataTypeList"), formValue);
                         break;
-                    }
                 case "Description":
-                    {
                         Page.EnterTextIntoTextBox(By.Id("descriptionInput"), formValue);
                         break;
-                    }
                 case "Masking":
-                    {
                         ClickOnMaskingCheckBox();
                         var maskitem = formValue.Split(',');
                         PartToMask(maskitem[0]);
                         MaskSize(maskitem[1]);
                         break;
-                    }
                 case "Pattern":
-                    {
                         Page.EnterTextIntoTextBox(By.Id("expressionInput"), formValue);
                         break;
-                    }
+                default:
+                        Assert.Fail(string.Format("Field is not recognised: {0}", fieldName));
+                        break;
             }
         }
 
@@ -188,6 +175,11 @@
                 string.Format("Validation error is not present for field: '{0}'", field));
         }
 
+        /// <summary>
+        /// Get form Input Error Details as a concatenated string 
+        /// </summary>
+        /// <param name="fieldsWithErrors"></param>
+        /// <param name="table"></param>
         public void GetFormInputErrorDetails(IReadOnlyCollection<IWebElement> fieldsWithErrors, Table table)
         {
             string textConcatenate = null;
@@ -207,12 +199,6 @@
             {
                 Assert.Fail(string.Format("Field input validation errors not reported for the following fields: '{0}'", fieldsThatShouldHaveHadErrorsShown));
             }
-        }
-
-        [StepDefinition(@"Remove Extraction")]
-        public void RemoveExtractionFile()
-        {
-
         }
     }
 }

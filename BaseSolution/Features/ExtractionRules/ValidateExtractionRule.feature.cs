@@ -72,10 +72,10 @@ namespace BaseSolution.Features.ExtractionRules
         
         public virtual void FeatureBackground()
         {
-#line 6
 #line 7
-    testRunner.Given("I have navigated to \'demo.activenavigation.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
+    testRunner.Given("I have navigated to \'demo.activenavigation.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 9
  testRunner.And("I click on \'Add Extraction Rule\' link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
@@ -85,12 +85,12 @@ namespace BaseSolution.Features.ExtractionRules
         public virtual void ValidateExtractionRuleInputFormByNotEnteringAnyData()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Extraction Rule input form by not entering any data", null, ((string[])(null)));
-#line 10
+#line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 7
 this.FeatureBackground();
-#line 11
+#line 12
  testRunner.When("I save the Extraction Rule without any data input", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -101,12 +101,12 @@ this.FeatureBackground();
                         "Type"});
             table1.AddRow(new string[] {
                         "Data Type"});
-#line 12
+#line 13
  testRunner.Then("I should get an error message stating that the fields are required for the follow" +
                     "ing:", ((string)(null)), table1, "Then ");
-#line 17
- testRunner.And("I update the Add Extraction Rule field \'Masking\' with values \'Please select,\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
+ testRunner.And("I update the Add Extraction Rule field \'Masking\' with values \'Please select,\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
  testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -118,7 +118,7 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "Mask size (%)",
                         "You must select a percentage of the value to be masked between 1 and 100."});
-#line 19
+#line 20
  testRunner.Then("I should get an error message for the following fields:", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -129,12 +129,12 @@ this.FeatureBackground();
         public virtual void ValidateExtractionRuleMaskSizeMustBeAPercentageFigure()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Extraction Rule Mask Size must be a percentage figure", null, ((string[])(null)));
-#line 24
+#line 25
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 7
 this.FeatureBackground();
-#line 25
+#line 26
  testRunner.And("I click on the masking checkbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -152,7 +152,7 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "Right, -1",
                         "Value must be between 1 and 100"});
-#line 26
+#line 27
     testRunner.And("I update the Masking field:", ((string)(null)), table3, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -163,15 +163,15 @@ this.FeatureBackground();
         public virtual void ValidateCannotAddAnExtractionRuleWithoutAPattern()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate cannot add an Extraction Rule without a Pattern", null, ((string[])(null)));
-#line 33
+#line 34
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 7
 this.FeatureBackground();
-#line 34
+#line 35
  testRunner.And("I update the Add Extraction Rule field \'Type\' with the drop-down value of \'Conten" +
                     "t Pattern Match\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
+#line 36
     testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -181,7 +181,7 @@ this.FeatureBackground();
                         "Pattern",
                         "A valid regular expression is required. CR and LF should be matched using \\r and " +
                             "\\n patterns"});
-#line 36
+#line 37
  testRunner.Then("I should get an error message for the following fields:", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -192,15 +192,15 @@ this.FeatureBackground();
         public virtual void ValidateNameFieldCharacterLengthCannotExceed50Characters()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate name field character length cannot exceed 50 characters", null, ((string[])(null)));
-#line 40
+#line 41
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 7
 this.FeatureBackground();
-#line 41
+#line 42
  testRunner.And("I enter the Add Extraction Rule field \'Name\' with the text \'Lorem ipsum dolor sit" +
                     " amet, consectetur adipiscinga\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
+#line 43
     testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -209,7 +209,7 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "Name",
                         "Max character length is 50"});
-#line 43
+#line 44
  testRunner.Then("I should get an error message for the following fields:", ((string)(null)), table5, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -220,14 +220,14 @@ this.FeatureBackground();
         public virtual void ValidateThatYouCannotAddAnExtractionRuleThatAlreadyExists()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate that you cannot add an Extraction Rule that already exists", null, ((string[])(null)));
-#line 47
+#line 48
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
+#line 7
 this.FeatureBackground();
-#line 48
- testRunner.And("I enter the Add Extraction Rule field \'SearchName\' with the text \'_Animals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 49
+ testRunner.And("I enter the Add Extraction Rule field \'SearchName\' with the text \'_Animals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 50
     testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -236,7 +236,7 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Name",
                         "Extraction rule name must be unique."});
-#line 50
+#line 51
  testRunner.Then("I should get an error message for the following fields:", ((string)(null)), table6, "Then ");
 #line hidden
             this.ScenarioCleanup();

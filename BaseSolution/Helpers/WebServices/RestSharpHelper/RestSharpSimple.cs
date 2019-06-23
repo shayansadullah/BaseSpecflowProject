@@ -14,7 +14,7 @@ namespace BaseSolution.Helpers.WebServices.RestSharpHelper
             client.Authenticator = new HttpBasicAuthenticator("shayansadullah2004@yahoo.co.uk", "0L1v301l");
             var request = new RestRequest();
             request.Resource = "/notifications";
-
+            
             var foo = client.Execute(request);
             return foo;
         }   

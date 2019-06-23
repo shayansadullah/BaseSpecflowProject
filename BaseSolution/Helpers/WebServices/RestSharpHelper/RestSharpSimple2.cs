@@ -11,10 +11,10 @@ namespace BaseSolution.Helpers.WebServices.RestSharpHelper
         {
             var client = new RestSharp.RestClient();
             client.ClearHandlers();
-            client.BaseUrl = new Uri("http://carma.org");
+            client.BaseUrl = new Uri("http://api.zippopotam.us");
             client.AddHandler("text/html", new JsonDeserializer());            
             var request = new RestRequest();
-            request.Resource = "api/1.1/searchPlants";
+            //request.Resource = "api/1.1/searchPlants";
             request.AddParameter("location", 5332921);
             request.AddParameter("limit", 10);  
             request.AddParameter("color", "red");

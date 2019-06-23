@@ -1,11 +1,7 @@
 ﻿namespace BaseSolution.Hooks
 {
-    using System;
-    using System.Configuration;
     using System.Diagnostics;
     using System.Linq;
-    using System.Net;
-    using System.Threading;
 
     internal class HookHelper
     {

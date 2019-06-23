@@ -3,7 +3,7 @@
     using TechTalk.SpecFlow;
 
     [Binding]
-    internal static class TestRunHooks
+    public class TestRunHooks
     {
         [BeforeTestRun]
         public static void BeforeTestRun()

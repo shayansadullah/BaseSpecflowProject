@@ -1,4 +1,5 @@
-﻿Feature: ValidateExtractionRules
+﻿
+Feature: ValidateExtractionRules
 	In order to validate an extraction rule
 	As an end user
 	I want to be able to enter incorrect data so that the validation is prompted
