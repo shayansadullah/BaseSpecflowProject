@@ -48,13 +48,16 @@ namespace BaseSolution.Pages
             return Context.Actions;
         }
 
-        public void NavigateTo(string url)
+        public void NavigateTo(string page)
         {
             var settings = ConfigurationManager.AppSettings;
-            var user = settings.Get("User");
-            var password = settings.Get("Password");
-            var activeNavigationUrl = string.Format("http://review%5c%5c{0}:{1}@demo.activenavigation.com/Admin/MetaDataExtractionRules.aspx", user, password);
-            this.Context.Driver.Navigate().GoToUrl(activeNavigationUrl);
+            if (page == "Active Navigation")
+            {
+                var user = settings.Get("User");
+                var password = settings.Get("Password");
+                var activeNavigationUrl = string.Format("http://review%5c%5c{0}:{1}@demo.activenavigation.com/Admin/MetaDataExtractionRules.aspx", user, password);
+                this.Context.Driver.Navigate().GoToUrl(activeNavigationUrl);
+            }
         }   
         
         public void RefreshBrowser()

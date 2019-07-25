@@ -108,7 +108,7 @@
     <Compile Include="Features\ExtractionRules\AddExtractionRule.feature.cs" />
     <Compile Include="Features\ExtractionRules\ValidateExtractionRule.feature.cs" />
     <Compile Include="Features\RestClientExample.feature.cs" />
-    <Compile Include="Features\SpecFlowFeature2.feature.cs" />
+    <Compile Include="Helpers\HookHelper.cs" />
     <Compile Include="Helpers\WebServices\Call.cs" />
     <Compile Include="Helpers\WebServices\RestSharpHelper\MyModel.cs" />
     <Compile Include="Helpers\WebServices\RestSharpHelper\RestSharpHelperAdvanced.cs" />

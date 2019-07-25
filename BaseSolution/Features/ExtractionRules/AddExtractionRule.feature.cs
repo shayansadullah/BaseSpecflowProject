@@ -31,8 +31,8 @@ namespace BaseSolution.Features.ExtractionRules
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-UK"), "AddExtractionRules", "\tIn order to create a successful extraction rule\r\n\tAs an end user\r\n\tI want to be " +
-                    "able to perform an extraction of data", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-UK"), "AddExtractionRules", "\tIn order to create an Extraction Rule\r\n\tAs an end user\r\n\tI want to be able to cr" +
+                    "eate a Rule with valid data", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,19 +74,19 @@ namespace BaseSolution.Features.ExtractionRules
         {
 #line 6
 #line 7
-    testRunner.Given("I have navigated to \'demo.activenavigation.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("the user navigates to the \'Active Navigation\' site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.And("I click on \'Add Extraction Rule\' link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the user opens the \'Add Extraction Rule\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Extraction Rule Successfully")]
-        [NUnit.Framework.TestCaseAttribute("DataExtraction", "Content Pattern Match", "String", "some description", "Left,20", "(?<=\\)[M-Z][^\\]*$", null)]
-        [NUnit.Framework.TestCaseAttribute("ÝÞßàáâãäåæçèéêëìíîï", "Content Pattern Match", "String", "ÝÞßàáâãäåæçèéêëìíîï", "Left,20", "some pattern", null)]
-        [NUnit.Framework.TestCaseAttribute("49characters49characters49characte", "Content Pattern Match", "String", "some description", "Right,80", "(?<=\\)[M-Z][^\\]*$", null)]
-        [NUnit.Framework.TestCaseAttribute("50characters50characters50character", "Content Pattern Match", "String", "some description", "Middle,40", "(?<=\\)[M-Z][^\\]*$", null)]
-        public virtual void AddExtractionRuleSuccessfully(string nameText, string typeText, string dataType, string description, string maskingDetails, string patternValue, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("DataExtraction", "Content Pattern Match", "String", "some description", "Left", "20", "(?<=\\)[M-Z][^\\]*$", null)]
+        [NUnit.Framework.TestCaseAttribute("ÝÞßàáâãäåæçèéêëìíîï", "Content Pattern Match", "String", "ÝÞßàáâãäåæçèéêëìíîï", "Left", "20", "some pattern", null)]
+        [NUnit.Framework.TestCaseAttribute("49characters49characters49characte", "Content Pattern Match", "String", "some description", "Right", "80", "(?<=\\)[M-Z][^\\]*$", null)]
+        [NUnit.Framework.TestCaseAttribute("50characters50characters50character", "Content Pattern Match", "String", "some description", "Middle", "40", "(?<=\\)[M-Z][^\\]*$", null)]
+        public virtual void AddExtractionRuleSuccessfully(string nameText, string typeText, string dataType, string description, string partToMask, string maskSize, string patternValue, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Extraction Rule Successfully", null, exampleTags);
 #line 10
@@ -95,24 +95,27 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line 11
- testRunner.And(string.Format("I enter the Add Extraction Rule field \'Name\' with the text \'{0}\'", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Name\' with the text \'{0}\'", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And(string.Format("I update the Add Extraction Rule field \'Type\' with the drop-down value of \'{0}\'", typeText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Type\' with the drop-down value of" +
+                        " \'{0}\'", typeText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.And(string.Format("I update the Add Extraction Rule field \'Data Type\' with the drop-down value of \'{" +
-                        "0}\'", dataType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Data Type\' with the drop-down val" +
+                        "ue of \'{0}\'", dataType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.And(string.Format("I enter the Add Extraction Rule field \'Description\' with the text \'{0}\'", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Description\' with the text \'{0}\'", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
- testRunner.And(string.Format("I update the Add Extraction Rule field \'Masking\' with values \'{0}\'", maskingDetails), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'PartToMask\' with values \'{0}\'", partToMask), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.And(string.Format("I enter the Add Extraction Rule field \'Pattern\' with the text \'{0}\'", patternValue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'MaskSize\' with values \'{0}\'", maskSize), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.When("I save the Extraction Rule successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Pattern\' with the text \'{0}\'", patternValue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.And("I search for the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("that User saves the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
- testRunner.Then("Extraction Rule is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("that User performs a search for that Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+ testRunner.Then("the Extraction Rule created is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

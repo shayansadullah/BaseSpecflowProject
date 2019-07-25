@@ -19,13 +19,14 @@
         private SUTMainPage Page { get; set; }
         private string ExtractionName { get; set; }
 
-        [StepDefinition(@"I have navigated to '(.*)'")]
-        public void GivenIHaveNavigatedTo(string website)
+        [StepDefinition(@"the user navigates to the '(.*)' site")]
+        public void GivenIHaveNavigatedTo(string page)
         {
-            Page.NavigateTo(website);
+            Page.NavigateTo(page);
         }
 
-        [StepDefinition(@"I click on '(.*)' link")]
+        [StepDefinition(@"the user opens the '(.*)' section")]
+
         public void ClickOnLink(string linkName)
         {
             switch (linkName)
@@ -39,10 +40,10 @@
             }
         }
 
-        [StepDefinition(@"I enter the Add Extraction Rule field '(.*)' with the text '(.*)'")]
-        [StepDefinition(@"I update the Add Extraction Rule field '(.*)' with the drop-down value of '(.*)'")]
-        [StepDefinition(@"I update the Add Extraction Rule field '(.*)' with value '(.*)'")]
-        [StepDefinition(@"I update the Add Extraction Rule field '(.*)' with values '(.*)'")]
+        [StepDefinition(@"the User updates the Add Extraction Rule field '(.*)' with the text '(.*)'")]
+        [StepDefinition(@"the User updates the Add Extraction Rule field '(.*)' with the drop-down value of '(.*)'")]
+        [StepDefinition(@"the User updates the Add Extraction Rule field '(.*)' with value '(.*)'")]
+        [StepDefinition(@"the User updates the Add Extraction Rule field '(.*)' with values '(.*)'")]
         public void AddExtractionDataField(string fieldName, string formValue)
         {
             Page.WaitForElementById("addEditRuleDialog");
@@ -72,11 +73,12 @@
                 case "Description":
                         Page.EnterTextIntoTextBox(By.Id("descriptionInput"), formValue);
                         break;
-                case "Masking":
+                case "PartToMask":
                         ClickOnMaskingCheckBox();
-                        var maskitem = formValue.Split(',');
-                        PartToMask(maskitem[0]);
-                        MaskSize(maskitem[1]);
+                        PartToMask(formValue);
+                        break;
+                case "MaskSize":
+                        MaskSize(formValue);
                         break;
                 case "Pattern":
                         Page.EnterTextIntoTextBox(By.Id("expressionInput"), formValue);
@@ -93,9 +95,10 @@
             foreach(var row in maskingFields.Rows)
             {
                 Page.ClearText("maskPercentInput");
-                AddExtractionDataField("Masking", row[0]);
+                AddExtractionDataField("PartToMask", row[0]);
+                AddExtractionDataField("MaskSize", row[1]);
                 SaveExtractionRules();
-                GetValidationInputError("Mask size (%)", row[1]);
+                GetValidationInputError("Mask size (%)", row[2]);
             }
         }
 
@@ -121,7 +124,7 @@
             Page.EnterTextIntoTextBox(By.Id("maskPercentInput"), percentInput);
         }
 
-        [StepDefinition(@"I save the Extraction Rule successfully")]
+        [StepDefinition(@"that User saves the Extraction Rule")]
         public void Save()
         {
             SaveExtractionRules();
@@ -136,7 +139,7 @@
             Page.ClickById("saveButton");
         }
 
-        [StepDefinition(@"I search for the Extraction Rule")]
+        [StepDefinition(@"that User performs a search for that Extraction Rule")]
         public void SearchForExtractionRule()
         {
             Page.WaitForElementById("gs_name");
@@ -144,7 +147,7 @@
             Page.SendEnterOrReturnKey(By.Id("gs_name"));
         }
 
-        [StepDefinition(@"Extraction Rule is present")]
+        [StepDefinition(@"the Extraction Rule created is present")]
         public void ThenIAmDisplayedDetailsFor()
         {
             var extractionName = Page.GetTextByXPath(string.Format("//td[contains(text(), '{0}')]", this.ExtractionName));

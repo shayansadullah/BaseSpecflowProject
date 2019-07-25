@@ -74,9 +74,9 @@ namespace BaseSolution.Features.ExtractionRules
         {
 #line 7
 #line 8
-    testRunner.Given("I have navigated to \'demo.activenavigation.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("the user navigates to the \'Active Navigation\' site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.And("I click on \'Add Extraction Rule\' link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the user opens the \'Add Extraction Rule\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -105,7 +105,8 @@ this.FeatureBackground();
  testRunner.Then("I should get an error message stating that the fields are required for the follow" +
                     "ing:", ((string)(null)), table1, "Then ");
 #line 18
- testRunner.And("I update the Add Extraction Rule field \'Masking\' with values \'Please select,\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the User updates the Add Extraction Rule field \'PartToMask\' with values \'Please s" +
+                    "elect\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
  testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -138,19 +139,24 @@ this.FeatureBackground();
  testRunner.And("I click on the masking checkbox", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Masking Field",
+                        "Part to Mask",
+                        "Mask Size",
                         "Error Value"});
             table3.AddRow(new string[] {
-                        "Left,101",
+                        "Left",
+                        "101",
                         "Value must be between 1 and 100"});
             table3.AddRow(new string[] {
-                        "Left,0.99",
+                        "Left",
+                        "0.99",
                         "Value must be between 1 and 100"});
             table3.AddRow(new string[] {
-                        "Left, sometext",
+                        "Middle",
+                        "sometext",
                         "Value must be numeric"});
             table3.AddRow(new string[] {
-                        "Right, -1",
+                        "Right",
+                        "-1",
                         "Value must be between 1 and 100"});
 #line 27
     testRunner.And("I update the Masking field:", ((string)(null)), table3, "And ");
@@ -169,8 +175,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line 35
- testRunner.And("I update the Add Extraction Rule field \'Type\' with the drop-down value of \'Conten" +
-                    "t Pattern Match\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the User updates the Add Extraction Rule field \'Type\' with the drop-down value of" +
+                    " \'Content Pattern Match\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 36
     testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -198,8 +204,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line 42
- testRunner.And("I enter the Add Extraction Rule field \'Name\' with the text \'Lorem ipsum dolor sit" +
-                    " amet, consectetur adipiscinga\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the User updates the Add Extraction Rule field \'Name\' with the text \'Lorem ipsum " +
+                    "dolor sit amet, consectetur adipiscinga\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 43
     testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -226,7 +232,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
 this.FeatureBackground();
 #line 49
- testRunner.And("I enter the Add Extraction Rule field \'SearchName\' with the text \'_Animals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the User updates the Add Extraction Rule field \'SearchName\' with the text \'_Anima" +
+                    "ls\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 50
     testRunner.When("I save the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

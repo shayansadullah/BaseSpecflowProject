@@ -27,8 +27,8 @@ C:\specflow-selenium\BaseSpecflowProject\BaseSolution\bin\Debug\ThoughtWorks.Sel
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\bin\Debug\Utf8Json.xml
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\bin\Debug\WebDriver.xml
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\bin\Debug\WebDriver.Support.xml
-C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csprojAssemblyReference.cache
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csproj.CoreCompileInputs.cache
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csproj.CopyComplete
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.dll
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.pdb
+C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csprojAssemblyReference.cache
