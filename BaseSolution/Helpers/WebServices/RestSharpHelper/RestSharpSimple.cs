@@ -11,7 +11,7 @@ namespace BaseSolution.Helpers.WebServices.RestSharpHelper
         {
             var client = new RestSharp.RestClient();
             client.BaseUrl = new Uri("http://twitter.com");
-            client.Authenticator = new HttpBasicAuthenticator("shayansadullah2004@yahoo.co.uk", "0L1v301l");
+            client.Authenticator = new HttpBasicAuthenticator("xxxx", "xxxx");
             var request = new RestRequest();
             request.Resource = "/notifications";
             
