@@ -95,27 +95,30 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line 11
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Name\' with the text \'{0}\'", nameText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.Given(string.Format("the User updates the Extraction Rule with {0},{1},{2},{3},{4},{5},{6}", nameText, typeText, dataType, description, partToMask, maskSize, patternValue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 12
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Type\' with the drop-down value of" +
-                        " \'{0}\'", typeText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Data Type\' with the drop-down val" +
-                        "ue of \'{0}\'", dataType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Description\' with the text \'{0}\'", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'PartToMask\' with values \'{0}\'", partToMask), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'MaskSize\' with values \'{0}\'", maskSize), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 17
- testRunner.And(string.Format("the User updates the Add Extraction Rule field \'Pattern\' with the text \'{0}\'", patternValue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 18
  testRunner.And("that User saves the Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 19
+#line 13
  testRunner.When("that User performs a search for that Extraction Rule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
+#line 14
  testRunner.Then("the Extraction Rule created is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("test me now")]
+        [NUnit.Framework.TestCaseAttribute("foobar", null)]
+        public virtual void TestMeNow(string name, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("test me now", null, exampleTags);
+#line 23
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line 24
+    testRunner.Given(string.Format("the User updates the Extraction Rule with {0}", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -32,3 +32,4 @@ C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csp
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.dll
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.pdb
 C:\specflow-selenium\BaseSpecflowProject\BaseSolution\obj\Debug\BaseSolution.csprojAssemblyReference.cache
+C:\specflow-selenium\BaseSpecflowProject\BaseSolution\bin\Debug\Dynamitey.dll

@@ -8,13 +8,7 @@ Background:
 	And the user opens the 'Add Extraction Rule' section
 
 Scenario Outline: Add Extraction Rule Successfully
-	And the User updates the Add Extraction Rule field 'Name' with the text '<NameText>'
-	And the User updates the Add Extraction Rule field 'Type' with the drop-down value of '<TypeText>'
-	And the User updates the Add Extraction Rule field 'Data Type' with the drop-down value of '<DataType>'
-	And the User updates the Add Extraction Rule field 'Description' with the text '<Description>'
-	And the User updates the Add Extraction Rule field 'PartToMask' with values '<PartToMask>'
-	And the User updates the Add Extraction Rule field 'MaskSize' with values '<MaskSize>'
-	And the User updates the Add Extraction Rule field 'Pattern' with the text '<PatternValue>'
+    Given the User updates the Extraction Rule with <NameText>,<TypeText>,<DataType>,<Description>,<PartToMask>,<MaskSize>,<PatternValue>	
 	And that User saves the Extraction Rule
 	When that User performs a search for that Extraction Rule
 	Then the Extraction Rule created is present
@@ -25,3 +19,10 @@ Scenario Outline: Add Extraction Rule Successfully
 	| ÝÞßàáâãäåæçèéêëìíîï                 | Content Pattern Match | String   | ÝÞßàáâãäåæçèéêëìíîï | Left       | 20		| some pattern			|
 	| 49characters49characters49characte  | Content Pattern Match | String   | some description    | Right      | 80		| (?<=\\)[M-Z][^\\]*$	|
 	| 50characters50characters50character | Content Pattern Match | String   | some description    | Middle     | 40		| (?<=\\)[M-Z][^\\]*$	|
+
+Scenario Outline: test me now
+    Given the User updates the Extraction Rule with <Name>
+
+	Examples:
+	| Name   |
+	| foobar |

@@ -9,7 +9,7 @@
     using Constants;
 
     [Binding]
-    internal class CommonSteps
+    internal class CommonSteps : Steps
     {
         public CommonSteps(SUTMainPage page)
         {
@@ -87,6 +87,24 @@
                         Assert.Fail(string.Format("Field is not recognised: {0}", fieldName));
                         break;
             }
+        }
+
+        [Given(@"the User updates the Extraction Rule with (.*),(.*),(.*),(.*),(.*),(.*),(.*)")]
+        public void AddExtractionData(string name, 
+                                      string type, 
+                                      string dataType, 
+                                      string description,
+                                      string partToMask,
+                                      string maskSize,
+                                      string patternValue)
+        {
+            Given(string.Format("the User updates the Add Extraction Rule field 'Name' with the text '{0}'", name));
+            Given(string.Format("the User updates the Add Extraction Rule field 'Type' with the drop-down value of '{0}'", type));
+            Given(string.Format("the User updates the Add Extraction Rule field 'Data Type' with the drop-down value of '{0}'", dataType));
+            Given(string.Format("the User updates the Add Extraction Rule field 'Description' with the text '{0}'", description));
+            Given(string.Format("the User updates the Add Extraction Rule field 'PartToMask' with values '{0}'", partToMask));
+            Given(string.Format("the User updates the Add Extraction Rule field 'MaskSize' with values '{0}'", maskSize));
+            Given(string.Format("the User updates the Add Extraction Rule field 'Pattern' with the text '{0}'", patternValue));
         }
 
         [StepDefinition(@"I update the Masking field:")]
